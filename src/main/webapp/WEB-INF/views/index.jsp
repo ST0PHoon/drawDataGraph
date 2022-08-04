@@ -104,7 +104,7 @@
 			<button type="submit" class="btn btn-primary mt-3">Export CSV</button>
 		  
 		</div>
-		
+		안재 확인용
 	    <div id="curve_chart" style="width: 40%;"></div>
 		<div id="curve_chart" style="width: 40%;"></div>
 	</body>
