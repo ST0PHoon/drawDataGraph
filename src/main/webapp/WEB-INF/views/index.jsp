@@ -106,6 +106,6 @@
 		</div>
 		
 	    <div id="curve_chart" style="width: 40%;"></div>
-		<div id="curve_chart" style="width: 40%;"></div>
+		
 	</body>
 </html>
