@@ -123,6 +123,7 @@
 				var d = ["-- 동 선택 --"];  
 			}
 			
+		
 			// 구에 따라 동 세팅
 			
 			if(e.value == 0){ 
@@ -207,109 +208,121 @@
 			}
 		</style>
        
-   </head>
+	</head>
    
-   <body>
-      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand">
-            서울특별시 아파트 매매 현황 (2012 ~ 2021)
-          </a>
-        </div>
-      </nav>
-      
-       <div class="container-fluid">   
-       <form method="post" id=conditions  action="index3">
-        <div class="container mt-5" id=gudong style={border-color:black}>
-         <div class="row">
-           <div class="col-sm-2" id="gu">
-            <h3>구</h3>
-              <select id="gu" name="gu" onchange=dongChange(this) style="width:auto;" aria-label="Default select example">
-              	<option value=-1 selected>-- 구 선택 --</option>
-            	<c:forEach var="gu" items="${gus}" varStatus="status">
-	              <option value="${status.index}">${gu}</option>
-                </c:forEach> 
-                </select>
-           </div>
-           
-      
-           <div class="col-sm-2" id="dongdiv" >
-            <h3>동</h3>
-             <select id="dong" name="dong" onchange=danjiChange(this) id="dong" style="width:auto;" aria-label="Default select example">
- 				<option selected>-- 동 선택 --</option>
-             </select>
-           </div>
-           
-           <div class="col-sm-2" id="danJidiv">
-            <h3>단지명</h3>        
-             <select id="danji" name="danji" style="width:auto;" aria-label="Default select example">
-              	<option selected>-- 단지 선택 --</option>
-            	<%-- <c:forEach var="gu" items="${guList}">
-	              <option value="${gu.gu}">${gu.gu}</option>
-                </c:forEach> --%>
-               </select>
-           </div>
-           <div class="col-sm-6" id="buttons">
-                <span><Center><button type="submit" class="btn btn-primary mt-3">Load Data</button></Center></span>
-         
-          </div>
-         </div>
-        </div>
-        
-        <div class="container mt-5">
-          <div class="row">
-             <div class="col-sm-3" id="year">
-             <h3>년도 선택</h3>
-              <select id=startYear name="startYear" style="width:auto;" aria-label="Default select example">
-              	<c:forEach  varStatus="status" begin="2012" end="2021" step="1">
-	              <option value="${status.index}">${status.index}</option>
-                </c:forEach> 
-               </select>
-   
-            <span> ~ </span>
-   
-            <select id=endYear name="endYear" style="width:auto;" aria-label="Default select example">
-              	<c:forEach  varStatus="status" begin="2012" end="2021" step="1">
-	              <option value="${status.index}">${status.index}</option>
-                </c:forEach> 
-               </select>
-             </div>
-               <div class="col-sm-3" id="area">
-             <h3>면적 선택</h3>
-               <input type="number" id=startArea name="startArea">
-        
-             
-             
-               <span> ㎡~ </span>             
-
-            	<input type="number" id=endArea name="endArea">
-             ㎡
-               </div>
-               <input type="submit">
-               </form>
-               <div class="col-sm-6" id="buttons"><center>
-                <span><button type="submit" class="btn btn-primary mt-3">Draw Graph</button></span>
-         		<span style=margin-left:50px><button type="submit" class="btn btn-primary mt-3">Export CSV</button></span></center></div>
-          </div>
-        </div>
-        <br>
-        <br>
-        <br>
-  
-         
-        <div class="d-flex justify-content-center">
-         
-          <span id="columnchart_material" style="width: 1000px; height: 380px"></span>
-        
-        </div>
-        <div class="d-flex justify-content-center">
-         <span id="curve_chart" style="width: 600px; height: 500px"></span>
-          
-          <span id="chart_div" style="width: 1000px; height: 500px"></span>
-        </div>
-                     `
-        
-    
-     </div>
-   </body>
+	<body>
+		<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+			<div class="container-fluid">
+				<a class="navbar-brand">
+					서울특별시 아파트 매매 현황 (2012 ~ 2021)
+				</a>
+			</div>
+		</nav>
+		<form method="post" id=conditions>
+			<div class="container-fluid">   
+				<div class="container mt-5" id=gudong style={border-color:black}>
+					<div class="row">
+						<div class="col-sm-2" id="gu">
+							<h3>구</h3>
+							<select onchange=dongChange(this) style="width:auto;" aria-label="Default select example">
+								<option value=-1 selected>-- 구 선택 --</option>
+								<c:forEach var="gu" items="${gus}" varStatus="status">
+									<option value="${status.index}">${gu}</option>
+								</c:forEach> 
+							</select>
+						</div>
+						<div class="col-sm-2" id="dongdiv" >
+			            <h3>동</h3>
+							<select onchange=danjiChange(this) id="dong" style="width:auto;" aria-label="Default select example">
+								<option selected>-- 동 선택 --</option>
+							</select>
+						</div>
+	
+						<div class="col-sm-2" id="danJidiv">
+				            <h3>단지명</h3>        
+							<select id="danji" style="width:auto;" aria-label="Default select example">
+								<option selected>-- 단지 선택 --</option>
+				            	<%-- <c:forEach var="gu" items="${guList}">
+					              <option value="${gu.gu}">${gu.gu}</option>
+				                </c:forEach> --%>
+							</select>
+						</div>
+					</div>
+	        	</div>
+				<div class="container mt-5">
+					<div class="row">
+						<div class="col-sm-3" id="year">
+							<h3>년도 선택</h3>
+							<select id=startYear style="width:auto;" aria-label="Default select example">
+								<c:forEach  varStatus="status" begin="2012" end="2021" step="1">
+									<option value="${status.index}">${status.index}</option>
+								</c:forEach> 
+							</select>
+			   
+							<span> ~ </span>
+			   
+							<select id=endYear style="width:auto;" aria-label="Default select example">
+								<c:forEach  varStatus="status" begin="2012" end="2021" step="1">
+									<option value="${status.index}">${status.index}</option>
+								</c:forEach> 
+							</select>
+		             	</div>
+						<div class="col-sm-3" id="area">
+		             		<h3>면적 선택</h3>
+							<input type="number" id=startArea>
+							<span> ㎡ ~ </span>             
+		            		<input type="number" id=endArea> ㎡
+						</div>
+						<div class="col-sm-6" id="buttons">
+							<span><button type="submit" class="btn btn-primary mt-3">Load Data</button></span>
+				            <span style=margin-left:20px><button type="submit" class="btn btn-primary mt-3">Draw Graph</button></span>
+							<span style=margin-left:20px><button action="index" type="submit" class="btn btn-primary mt-3">Export CSV</button></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>  
+		  
+		<br>
+		<br>
+		<br>
+	
+	 	<div>
+			<c:forEach var="item" items="${all}">
+				<tr>
+				<%-- 	<td width=200px height=30px><b>${item.min}</b></td>
+					<td width=200px height=30px><b>${item.max}</b></td>
+					<td width=200px height=30px><b>${item.contractYear}</b></td> --%>
+				
+					<th width=200px height=30px>${item.gu}</th>
+					<td width=200px height=30px><b>${item.dong}</b></td>
+					<td width=200px height=30px><b>${item.danji}</b></td>
+					<td width=200px height=30px><b>${item.area}</b></td>
+					<td width=200px height=30px><b>${item.contractPrice}</b></td>
+					<td width=200px height=30px><b>${item.contractYear}</b></td>
+					<td width=200px height=30px><b>${item.contractMonth}</b></td>
+				</tr>
+			</c:forEach>
+		</div> 
+		<div>
+			<c:forEach var="item" items="${contractPriceMaxMin}">
+				<tr>
+				 	<td width=200px height=30px><b>${item.min}</b></td>
+					<td width=200px height=30px><b>${item.max}</b></td>
+					<td width=200px height=30px><b>${item.contractYear}</b></td>  
+			
+					
+				</tr>
+			 </c:forEach> 
+		</div> 
+			
+		<div class="d-flex justify-content-center">
+			<span id="columnchart_material" style="width: 1000px; height: 380px"></span>
+		</div>
+	        
+		<div class="d-flex justify-content-center">
+			<span id="curve_chart" style="width: 600px; height: 500px"></span>
+			<span id="chart_div" style="width: 1000px; height: 500px"></span>
+		</div>
+	</body>
 </html>
